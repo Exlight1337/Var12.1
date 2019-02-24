@@ -1,6 +1,6 @@
-fun main () {
-    val chelik = Var12N1("Игорь", "Козлов", 19)
-    println(chelik.firstName)
-    println(chelik.lastName)
-    println(chelik.age)
+
+fun main (loooms: Array<String>) {
+    var loooms = roooms("Козлов","Ломоносова", "100", "140")
+    print(loooms)
+
 }
