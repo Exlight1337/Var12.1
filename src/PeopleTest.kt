@@ -1,8 +1,7 @@
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Test
-import kotlin.test.assertEquals
+package test
 
-internal class PeopleTest
+import org.junit.jupiter.api.Test
+
 @Test
-fun add(){
+fun main(){
 }
