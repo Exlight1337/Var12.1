@@ -1,7 +1,47 @@
 package test
 
+import cc.bookOfName
 import org.junit.jupiter.api.Test
+import kotlin.test.assertEquals
 
-@Test
-fun main(){
+class Tests {
+    val ad1 = cc.Adress("Ломоносова", "100", "140")
+    val ad2 = cc.Adress("Харченко", "16", "6")
+    val ad3 = cc.Adress("Васильевская", "20", "100")
+    val ad4 = cc.Adress("Харченко", "16", "6ф")
+
+    val adressName = mutableMapOf(
+        "Козлов" to ad1,
+        "Петров" to ad3,
+        "Качоткин" to ad2,
+        "Горюнов" to ad4
+    )
+
+
+    @Test
+    fun addressNames() {
+        assertEquals(
+            cc.Adress("Ломоносова", "100", "140"),
+            cc.bookOfName(adressName).addresOfNames("Козлов"))
+
+        assertEquals(
+            cc.Adress("Харченко", "16", "6"),
+            cc.bookOfName(adressName).addresOfNames("Качоткин"))
+    }
+
+    @Test
+    fun adPair() {
+       val adPair1 = cc.bookOfName(mutableMapOf("Качоткин" to ad2, "Петров" to ad3, "Горюнов" to ad4))
+       adPair1.addPair("Козлов" to ad1)
+        assertEquals(cc.bookOfName(adressName), adPair1)
+
+        val adPair2 = cc.bookOfName(mutableMapOf("Козлов" to ad1, "Качоткин" to ad2, "Горюнов" to ad4))
+        adPair2.addPair("Петров" to ad3)
+        assertEquals(cc.bookOfName(adressName), adPair2)
+
+        val adPair3 = cc.bookOfName(mutableMapOf("Козлов" to ad1, "Качоткин" to ad2, "Петров" to ad3))
+        adPair3.addPair("Горюнов" to ad4)
+        assertEquals(cc.bookOfName(adressName), adPair3)
+    }
+
 }
