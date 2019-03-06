@@ -6,10 +6,11 @@ class cc {
 
         fun addresOfNames(name: String): Adress = adList[name] ?: throw Exception()
 
-        fun addPair(person: Pair<String, Adress>) {
+        fun Pair(person: Pair<String, Adress>) {
             val list = adList.any{ it.key == person.first }
             if (!list)
                 adList[person.first] = person.second
         }
+        fun delete(name1: String) = adList.remove(name1)
     }
 }

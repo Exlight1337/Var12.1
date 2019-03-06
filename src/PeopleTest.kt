@@ -30,18 +30,26 @@ class Tests {
     }
 
     @Test
-    fun adPair() {
+    fun Pair() {
        val adPair1 = cc.bookOfName(mutableMapOf("Качоткин" to ad2, "Петров" to ad3, "Горюнов" to ad4))
-       adPair1.addPair("Козлов" to ad1)
+       adPair1.Pair("Козлов" to ad1)
         assertEquals(cc.bookOfName(adressName), adPair1)
 
         val adPair2 = cc.bookOfName(mutableMapOf("Козлов" to ad1, "Качоткин" to ad2, "Горюнов" to ad4))
-        adPair2.addPair("Петров" to ad3)
+        adPair2.Pair("Петров" to ad3)
         assertEquals(cc.bookOfName(adressName), adPair2)
 
         val adPair3 = cc.bookOfName(mutableMapOf("Козлов" to ad1, "Качоткин" to ad2, "Петров" to ad3))
-        adPair3.addPair("Горюнов" to ad4)
+        adPair3.Pair("Горюнов" to ad4)
         assertEquals(cc.bookOfName(adressName), adPair3)
     }
 
+    @Test
+    fun delete(){
+        val addadress1 = cc.bookOfName(mutableMapOf("Козлов" to ad1,"Петров" to ad3,
+            "Качоткин" to ad2,
+            "Горюнов" to ad4))
+        addadress1.delete("Козлов")
+        assertEquals(cc.bookOfName(mutableMapOf("Качоткин" to ad2,"Петров" to ad3,"Горюнов" to ad4)),addadress1)
+    }
 }
