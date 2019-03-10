@@ -52,4 +52,17 @@ class Tests {
         addadress1.delete("Козлов")
         assertEquals(cc.bookOfName(mutableMapOf("Качоткин" to ad2,"Петров" to ad3,"Горюнов" to ad4)),addadress1)
     }
+
+    @Test
+    fun changeAdressOfPeople() {
+        val chad = cc.bookOfName(mutableMapOf("Козлов" to ad1,
+            "Петров" to ad3,
+            "Качоткин" to ad2,
+            "Горюнов" to ad4))
+        chad.changeAdressOfPeople("Козлов" to cc.Adress("Харченко", "16", "6р"))
+        assertEquals(cc.bookOfName(mutableMapOf("Петров" to ad3,
+            "Качоткин" to ad2,
+            "Горюнов" to ad4,
+            "Козлов" to cc.Adress("Харченко", "16", "6р"))),chad)
+    }
 }

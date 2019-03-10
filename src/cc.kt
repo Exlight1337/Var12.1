@@ -12,5 +12,10 @@ class cc {
                 adList[person.first] = person.second
         }
         fun delete(name1: String) = adList.remove(name1)
+
+        fun changeAdressOfPeople(person: Pair<String, Adress>) {
+            delete(person.first)
+            Pair(person)
+        }
     }
 }
