@@ -1,6 +1,5 @@
 package test
 
-import cc.bookOfName
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
@@ -64,5 +63,15 @@ class Tests {
             "Качоткин" to ad2,
             "Горюнов" to ad4,
             "Козлов" to cc.Adress("Харченко", "16", "6р"))),chad)
+    }
+
+    @Test
+    fun inTheStreet(){
+        assertEquals(listOf("Качоткин", "Горюнов"),cc.bookOfName(adressName).inTheStreet("Харченко"))
+    }
+
+    @Test
+    fun inTheHouse(){
+        assertEquals(listOf("Качоткин","Горюнов"),cc.bookOfName(adressName).inTheHouse("16"))
     }
 }
