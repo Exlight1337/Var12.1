@@ -26,11 +26,11 @@ class cc {
         }
 
         fun inTheStreet(adress: String): List<String> {
-            val answer = mutableListOf<String>()
-            for (Str in adList)
-                if (adress == Str.value.adress)
-                    answer.add(Str.key)
-            return answer
+            val AdressList = mutableListOf<String>()
+            for (Adr in adList)
+                if (adress == Adr.value.adress)
+                    AdressList.add(Adr.key)
+            return AdressList
         }
 
         fun inTheHouse(house: String): List<String>{
