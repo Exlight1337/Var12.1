@@ -1,28 +1,34 @@
-
-class cc {
+@file:Suppress("UNUSED_PARAMETER", "unused")
+package ClassofBook
+class bookofaddress {
 
     data class Adress (var adress: String, var house: String, var appartament: String)
 
-    data class bookOfName (var adList: MutableMap<String,Adress>) {
+    data class bookOfName (var adList: MutableMap<String, Adress>) {
+
 
         fun addresOfNames(name: String): Adress {
            val adName = adList[name] ?: throw Exception()
             return adName
         }
 
-        fun Pair(person: Pair<String, Adress>) {
+        fun pair(person: Pair<String, Adress>) {
             adList.any {it.key == person.first}
                 adList[person.first] = person.second
         }
 
-        fun delete(name1: String) {
-            adList.remove(name1)
+        fun delete(name1: String):Boolean {
+            return if (adList.containsKey(name1)){
+                adList.remove(name1)
+                true
+            } else false
         }
 
-        fun changeAdressOfPeople(person: Pair<String, Adress>) {
-           val changeAd = delete(person.first)
-            Pair(person)
-            return changeAd
+        fun changeAdressOfPeople(person: Pair<String, Adress>):Boolean {
+          return if (adList.containsKey(person.first)){
+                adList[person.first] = person.second
+              true
+            }  else false
         }
 
         fun inTheStreet(adress: String): List<String> {
