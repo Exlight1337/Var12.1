@@ -3,6 +3,8 @@ package test
 import ClassofBook.bookofaddress
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class Tests {
     val ad1 = bookofaddress.Adress("Ломоносова", "100", "140")
@@ -71,9 +73,10 @@ class Tests {
             "Качоткин" to ad2,
             "Горюнов" to ad4,
             "Артюхов" to ad5))
-        addadress1.delete("Козлов")
-        assertEquals(bookofaddress.bookOfName(mutableMapOf("Качоткин" to ad2,"Петров" to ad3,"Горюнов" to ad4,"Артюхов" to ad5
-        )),addadress1)
+        assertTrue(addadress1.delete("Козлов"))
+        assertFalse(addadress1.delete("Касаткин"))
+        assertTrue(addadress1.delete("Артюхов"))
+        assertFalse(addadress1.delete("Козолевич"))
     }
 
     @Test
@@ -83,12 +86,10 @@ class Tests {
             "Качоткин" to ad2,
             "Горюнов" to ad4,
             "Артюхов" to ad5))
-        chad.changeAdressOfPeople("Козлов" to bookofaddress.Adress("Харченко", "16", "6р"))
-        assertEquals(bookofaddress.bookOfName(mutableMapOf("Петров" to ad3,
-            "Качоткин" to ad2,
-            "Горюнов" to ad4,
-            "Артюхов" to ad5,
-            "Козлов" to bookofaddress.Adress("Харченко", "16", "6р"))),chad)
+        assertTrue(chad.changeAdressOfPeople("Козлов" to bookofaddress.Adress("Харченко", "16", "6р")))
+        assertFalse(chad.changeAdressOfPeople("Козлевич" to bookofaddress.Adress("Харченко", "16", "6р")))
+        assertTrue(chad.changeAdressOfPeople("Артюхов" to bookofaddress.Adress("ВерниМнеДеньги", "200", "рублей")))
+
     }
 
     @Test
