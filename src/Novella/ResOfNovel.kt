@@ -1,41 +1,39 @@
 @file:Suppress("UNUSED_PARAMETER", "unused")
 package Novella
-import jcurses.system.Toolkit
 import java.io.File
 
 
 class ResOfNovel {
     var c = ""
+    var ansChecker = true
+    var phrase = listOf("", "")
     fun readBeginning () {
-        val begin = File("C://Users/Igor/IdeaProjects/Var12/Begin.txt").readText()
-        println(begin)
+        var count = 1
+        while (count <= 2) {
 
-            println("1)println()")
-            println("2)prentln()")
-            println("3)Я не хочу изучать язык программирования Kotlin!")
+            val file = File("C://Users/Igor/IdeaProjects/novell/$count.txt").readText().split("-----")
 
-         c = readLine().toString()
+            val begin = file[0]
+            println(begin)
+
+            println(file[1])
+            println(file[2])
+            println(file[3])
+
+            c = readLine().toString()
 
             when (c) {
-                "1" -> println(File("C://Users/Igor/IdeaProjects/Var12/11.txt").readText())
-                "2" -> println(File("C://Users/Igor/IdeaProjects/Var12/12.txt").readText())
-                "3" -> println(File("C://Users/Igor/IdeaProjects/Var12/13.txt").readText())
+                "1" -> phrase =  File("C://Users/Igor/IdeaProjects/novell/${count}1.txt").readText().split("-----")
+                "2" -> phrase =  File("C://Users/Igor/IdeaProjects/novell/${count}2.txt").readText().split("-----")
+                "3" -> phrase =  File("C://Users/Igor/IdeaProjects/novell/${count}3.txt").readText().split("-----")
+                else -> count--
             }
-        }
-    fun continued () {
-        var a = ""
-        val continuation = File("C://Users/Igor/IdeaProjects/Var12/Continued.txt").readText()
-        println(continuation)
+            ansChecker = phrase[1] == "true"
+            println(phrase[0])
+            if ((c == "3") && (count == 1)) break
+            if (ansChecker) count++
 
-        println("1)К типу Int")
-        println("2)К типу Double")
-        println("3)К типу Char")
 
-        a = readLine().toString()
-        when(a) {
-            "1" -> println(File("C://Users/Igor/IdeaProjects/Var12/21.txt").readText())
-            "2" -> println(File("C://Users/Igor/IdeaProjects/Var12/22.txt").readText())
-            "3" -> println(File("C://Users/Igor/IdeaProjects/Var12/23.txt").readText())
         }
     }
     }
