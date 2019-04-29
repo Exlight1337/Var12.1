@@ -4,10 +4,11 @@ import java.io.File
 
 
 class ResOfNovel {
+    var a = 0
     var c = ""
     var ansChecker = true
     var phrase = listOf("", "")
-    fun readBeginning () {
+    fun readNovel (): Int {
         var count = 1
         while (count <= 2) {
 
@@ -30,10 +31,16 @@ class ResOfNovel {
             }
             ansChecker = phrase[1] == "true"
             println(phrase[0])
+
             if ((c == "3") && (count == 1)) break
+
             if (ansChecker) count++
 
-
+            if (c == "1") a++
         }
+
+        var sum = "Правильных ответов" + a.toString()
+        println(sum)
+        return a
     }
     }
