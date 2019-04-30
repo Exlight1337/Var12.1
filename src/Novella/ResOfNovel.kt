@@ -36,7 +36,7 @@ class ResOfNovel {
 
             if (ansChecker) count++
 
-            if (c == "1") a++
+            if (phrase[1] == "true") a++
         }
 
         var sum = "Правильных ответов" + a.toString()

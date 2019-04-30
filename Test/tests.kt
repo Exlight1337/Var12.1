@@ -9,6 +9,6 @@ class Test {
 
     @Test
     fun readNovel() {
-     assertEquals(2, 2)
+        assertEquals(2, 2)
     }
 }
