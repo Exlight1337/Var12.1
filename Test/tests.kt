@@ -1,14 +1,14 @@
 package test
 
 import Novella.ResOfNovel
+import com.xenomachina.argparser.ArgParser
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
-class Test {
-    val novelTest = ResOfNovel()
+    fun mainTest (args: Array<String>):List<String> {
+    return  ArgParser(args).parseInto(::ResOfNovel).readNovel()
+}
 
-    @Test
-    fun readNovel() {
-        assertEquals(2, 2)
-    }
+class Test {
+
 }

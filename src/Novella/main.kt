@@ -1,6 +1,7 @@
 package Novella
 
+import com.xenomachina.argparser.ArgParser
+
 fun main (args: Array<String>){
-     val begin = ResOfNovel()
-       begin.readNovel()
+    ArgParser(args).parseInto(::ResOfNovel).readNovel()
     }

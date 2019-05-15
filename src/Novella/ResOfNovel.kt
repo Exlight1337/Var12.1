@@ -1,46 +1,48 @@
 @file:Suppress("UNUSED_PARAMETER", "unused")
 package Novella
 import java.io.File
+import com.xenomachina.argparser.ArgParser
 
+class ResOfNovel (parser: ArgParser) {
 
-class ResOfNovel {
-    var a = 0
+    private val k by parser.flagging("-k", help = "флаг вариантов ответа")
+
+    var count = 1
     var c = ""
-    var ansChecker = true
+    var ansChecker = "true"
     var phrase = listOf("", "")
-    fun readNovel (): Int {
-        var count = 1
+    fun readNovel () : List<String> {
         while (count <= 2) {
 
-            val file = File("C://Users/Igor/IdeaProjects/novell/$count.txt").readText().split("-----")
+            val source = File("input/$count.txt").readText().split("-----")
 
-            val begin = file[0]
-            println(begin)
-
-            println(file[1])
-            println(file[2])
-            println(file[3])
-
-            c = readLine().toString()
+            var k = 0
+            while (k <= 3) {
+                println(source[k])
+                k++
+            }
 
             when (c) {
-                "1" -> phrase =  File("C://Users/Igor/IdeaProjects/novell/${count}1.txt").readText().split("-----")
-                "2" -> phrase =  File("C://Users/Igor/IdeaProjects/novell/${count}2.txt").readText().split("-----")
-                "3" -> phrase =  File("C://Users/Igor/IdeaProjects/novell/${count}3.txt").readText().split("-----")
+                "1" -> phrase =  File("input/${count}1.txt").readText().split("-----")
+                "2" -> phrase =  File("input/${count}2.txt").readText().split("-----")
+                "3" -> phrase =  File("input/${count}3.txt").readText().split("-----")
                 else -> count--
             }
-            ansChecker = phrase[1] == "true"
+
+            ansChecker = phrase[1]
             println(phrase[0])
 
-            if ((c == "3") && (count == 1)) break
+            if ((c == "3") && (count == 1)){
+                count--
+                break
+            }
 
-            if (ansChecker) count++
-
-            if (phrase[1] == "true") a++
+            if (ansChecker.toBoolean()) count++
         }
 
-        var sum = "Правильных ответов" + a.toString()
-        println(sum)
-        return a
+        count--
+
+        var sum = "Правильных ответов = $count"
+       return listOf(sum)
     }
     }
