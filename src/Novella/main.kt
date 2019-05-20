@@ -2,7 +2,14 @@ package Novella
 
 import com.xenomachina.argparser.ArgParser
 
+import org.kohsuke.args4j.CmdLineParser
+
+
+
 
 fun main (args: Array<String>){
-    ArgParser(args).parseInto(::ResOfNovel).writting()
-    }
+    var read = ResOfNovel().readNovel()
+    println(read)
+}
+
+

@@ -12,18 +12,11 @@ import java.io.ByteArrayOutputStream
 
 
 class Test {
-    private val myOut = ByteArrayOutputStream()
-    private val errOut = ByteArrayOutputStream()
+    var reading = ResOfNovel().readNovel()
+    @Test
+    fun main() {
+        assertEquals(reading, "2 Правильных ответа")
+    }
+}
 
-    @BeforeEach
-    fun before() {
-        System.setOut(PrintStream(myOut))
-        System.setErr(PrintStream(errOut))
-    }
-        @Test
-        fun main(){
-            val argsEmpty = arrayOf("Правильных ответов = 2")
-            main(argsEmpty)
-            assertEquals(myOut.toString(),"Правильных ответов = 2",System.lineSeparator())
-        }
-    }
+
