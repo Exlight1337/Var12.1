@@ -4,12 +4,14 @@ import java.io.File
 import com.xenomachina.argparser.ArgParser
 
 @Suppress("UNREACHABLE_CODE")
-class ResOfNovel (){
+class ResOfNovel (parser: ArgParser){
+    private val с by parser.flagging("-с",help = "номер ответа")
 
     var c = ""
     var ansChecker = "true"
     var phrase = listOf("", "")
-    fun readNovel(): String{
+    fun readNovel(): List<String>{
+
         var count = 1
         while (count <= 2) {
             val source = File("input/$count.txt").readText().split("-----")
@@ -31,11 +33,6 @@ class ResOfNovel (){
             ansChecker = phrase[1]
             println(phrase[0])
 
-            if ((c == "3") && (count == 1)) {
-                count--
-                break
-            }
-
             if (ansChecker.toBoolean()) {
                 count++
             }
@@ -43,10 +40,15 @@ class ResOfNovel (){
 
         count--
 
-        var sum = "$count"
+        val sum = listOf("Правильных ответов =$count")
 
-        return """
-            ${sum} Правильных ответа
-            """.trimIndent()
+        return sum
     }
+
+    fun writting() {
+        val game = readNovel()
+        for (b in game) {
+            println(b)
+        }
     }
+}

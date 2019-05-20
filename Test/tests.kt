@@ -9,13 +9,14 @@ import org.junit.jupiter.api.BeforeEach;
 import java.io.PrintStream
 import java.io.ByteArrayOutputStream
 
-
+fun mainTest(args: Array<String>): List<String> {
+    return ArgParser(args).parseInto(::ResOfNovel).readNovel()
+}
 
 class Test {
-    var reading = ResOfNovel().readNovel()
     @Test
     fun main() {
-        assertEquals(reading, "2 Правильных ответа")
+        assertEquals(listOf("Правильных ответов =2"), mainTest(arrayOf("-test","Правильных ответов =2","input/test.txt")))
     }
 }
 
