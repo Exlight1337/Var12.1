@@ -11,6 +11,7 @@ import java.io.ByteArrayOutputStream
 
 
 fun main (args: Array<String>){
+    ArgParser(args).parseInto(::ResOfNovel).writting()
     val baos = ByteArrayOutputStream()
     val ps = PrintStream(baos)
     val old = System.out

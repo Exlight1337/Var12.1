@@ -29,7 +29,7 @@ fun before() {
     }
 
     @Test
-    fun test2() {
+    fun main2() {
         val args2 = arrayOf("Правильных ответов =2","input/test.txt")
         main(args2)
 
