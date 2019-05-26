@@ -9,15 +9,33 @@ import org.junit.jupiter.api.BeforeEach;
 import java.io.PrintStream
 import java.io.ByteArrayOutputStream
 
-fun mainTest(args: Array<String>): List<String> {
-    return ArgParser(args).parseInto(::ResOfNovel).readNovel()
+class Test {
+private val my = ByteArrayOutputStream()
+private val err = ByteArrayOutputStream()
+
+@BeforeEach
+fun before() {
+    System.setOut(PrintStream(my))
+    System.setErr(PrintStream(err))
 }
 
-class Test {
+
     @Test
     fun main() {
-        assertEquals(listOf("Правильных ответов =2"), mainTest(arrayOf("-test","Правильных ответов =2","input/test.txt")))
+        val argsEmpty = arrayOf<String>()
+        main(argsEmpty)
+
+        assertEquals(my.toString(), "Правильных ответов =2" + System.lineSeparator())
     }
+
+    @Test
+    fun test2() {
+        val args2 = arrayOf("Правильных ответов =2","input/test.txt")
+        main(args2)
+
+        assertEquals(my.toString(), "Правильных ответов =2" + System.lineSeparator())
+    }
+
 }
 
 

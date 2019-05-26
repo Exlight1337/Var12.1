@@ -5,9 +5,9 @@ import com.xenomachina.argparser.ArgParser
 
 @Suppress("UNREACHABLE_CODE")
 class ResOfNovel (parser: ArgParser){
-    private val с by parser.flagging("-с",help = "номер ответа")
+    private val test by parser.flagging("-test")
 
-    var c = ""
+var c = ""
     var ansChecker = "true"
     var phrase = listOf("", "")
     fun readNovel(): List<String>{
