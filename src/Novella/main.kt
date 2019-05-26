@@ -10,7 +10,7 @@ import java.io.ByteArrayOutputStream
 
 
 
-fun main (args: Array<String>){
+fun main1 (args: Array<String>){
     ArgParser(args).parseInto(::ResOfNovel).writting()
     val baos = ByteArrayOutputStream()
     val ps = PrintStream(baos)
